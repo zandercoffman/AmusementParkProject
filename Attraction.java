@@ -10,7 +10,7 @@
 *
 *   @author Jacob Pape
 *   @author Zander Coffman (s26600042)
-*   @author Vy Huynh
+*   @author Vy Huynh (s26600057)
 */
 
 public class Attraction
@@ -62,6 +62,28 @@ public class Attraction
     this.ridetime = ridetime;
     this.maxPerDay = maxPerDay;
   }
+
+  public Attraction(double utilitiecost, int maxRiders, double speed, double height, int ridetime) {
+
+  // the amount of hours open (12 hours)/ (ridetime+ 1) and then mutiplyed by max riders
+  maxPerDay = (720/(ridetime+1))* maxRiders;
+    this.utilitiecost = utilitiecost;
+    this.maxRiders = maxRiders;
+    //amount of tickets= total amount of riders can ride
+    this.numtickets = maxPerDay;
+    //(utilitiecost/number of tickets) +1 for extra money
+    ticketCost= (int)((utilitiecost/(double)numtickets)+1);
+
+    attendants= maxRiders/50;
+    if(attendants==0) {
+      attendants= 3;
+    }
+
+    this.speed = speed;
+    this.height = height;
+    this.ridetime = ridetime;
+  }
+  
   /**
   *  @return maxPerDay
   *  
